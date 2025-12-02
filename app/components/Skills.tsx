@@ -15,7 +15,11 @@ import {
   Cloud,
   CheckCircle,
   BookOpen,
-  FileCode2
+  FileCode2,
+  Server,
+  Database,
+  Merge,
+  ShieldCheck
 } from "lucide-react";
 
 const skillCategories = [
@@ -26,6 +30,7 @@ const skillCategories = [
       { name: "TypeScript", icon: Braces },
     ],
   },
+
   {
     title: "Markup & Styling",
     skills: [
@@ -35,14 +40,47 @@ const skillCategories = [
       { name: "Tailwind CSS", icon: Box },
     ],
   },
+
   {
-    title: "Frameworks & Libraries",
+    title: "Frontend Frameworks & Libraries",
     skills: [
       { name: "Angular", icon: Layers },
       { name: "React", icon: Cpu },
       { name: "Redux", icon: Layers },
     ],
   },
+
+  {
+    title: "Backend & Runtime",
+    skills: [
+      { name: "Node.js", icon: Server },
+      { name: "Express.js", icon: Merge },
+    ],
+  },
+
+  {
+    title: "Databases",
+    skills: [
+      { name: "MongoDB", icon: Database },
+    ],
+  },
+
+  {
+    title: "API Integration & Tools",
+    skills: [
+      { name: "RESTful APIs", icon: Cloud },
+      { name: "JSON", icon: FileJson },
+      { name: "Postman", icon: Cloud },
+    ],
+  },
+
+  {
+    title: "Testing",
+    skills: [
+      { name: "Jest", icon: ShieldCheck },
+    ],
+  },
+
   {
     title: "Version Control & Dev Tools",
     skills: [
@@ -52,14 +90,7 @@ const skillCategories = [
       { name: "VS Code", icon: FileCode2 },
     ],
   },
-  {
-    title: "API Integration & Tools",
-    skills: [
-      { name: "RESTful APIs", icon: Cloud },
-      { name: "JSON", icon: FileJson },
-      { name: "Postman", icon: Cloud },
-    ],
-  },
+
   {
     title: "Development Practices",
     skills: [
@@ -68,8 +99,9 @@ const skillCategories = [
       { name: "Scrum", icon: CheckCircle },
       { name: "Component-Based Architecture", icon: Layers },
     ],
-  }
+  },
 ];
+
 
 export default function Skills() {
   return (
@@ -91,7 +123,8 @@ export default function Skills() {
             </h3>
 
             {/* Skills Grid */}
-            <div className="grid sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
               {category.skills.map((skill, index) => (
                 <motion.div
                   key={index}

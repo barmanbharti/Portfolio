@@ -28,7 +28,7 @@ export default function Contact() {
 
   {/* Download CV */}
   <a
-    href="/BHARTI-KUMARI-Frontend dev-Resume.pdf"
+    href="/Bharti Fullstack Resume.pdf"
     download
     className="mt-8 inline-block px-6 py-3 bg-indigo-600 hover:bg-indigo-500 rounded-lg text-white font-medium transition"
   >
