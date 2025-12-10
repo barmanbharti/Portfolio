@@ -140,45 +140,64 @@ export default function Projects() {
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
 
   // AUTO SLIDE
- // AUTO SLIDE
 useEffect(() => {
-  const slider = sliderRef.current;
-  if (!slider) return;
+    const slider = sliderRef.current;
+    if (!slider) return;
 
-  const startAuto = () => {
-    stopAuto();
-    autoRef.current = setInterval(() => {
-      if (!slider || isHovering) return;
+    const startAuto = () => {
+      stopAuto();
+      autoRef.current = setInterval(() => {
+        if (!slider || isHovering) return;
 
-      const amount = slider.clientWidth;   // ⭐ scroll full card width
-      slider.scrollBy({ left: amount, behavior: "smooth" });
+        // ⭐ exact card width instead of slider width
+        const card = slider.querySelector("div.snap-start") as HTMLDivElement;
+        const amount = card?.clientWidth || slider.clientWidth;
 
-      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
-        slider.scrollTo({ left: 0, behavior: "smooth" });
-      }
-    }, 3000);
+        slider.scrollBy({ left: amount, behavior: "smooth" });
+
+        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+          slider.scrollTo({ left: 0, behavior: "smooth" });
+        }
+      }, 3000);
+    };
+
+    const stopAuto = () => {
+      if (autoRef.current) clearInterval(autoRef.current);
+    };
+
+    startAuto();
+    return () => stopAuto();
+  }, [isHovering]);
+
+  // ⭐ FIXED ARROW SCROLL
+  const scroll = (dir: "left" | "right") => {
+    const slider = sliderRef.current;
+    if (!slider) return;
+
+    const card = slider.querySelector("div.snap-start") as HTMLDivElement;
+    const amount = card?.clientWidth || slider.clientWidth;
+
+    slider.scrollBy({
+      left: dir === "left" ? -amount : amount,
+      behavior: "smooth",
+    });
   };
 
-  const stopAuto = () => {
-    if (autoRef.current) clearInterval(autoRef.current);
+  // 3D TILT EFFECT
+  const handleTilt = (e: React.MouseEvent) => {
+    const el = e.currentTarget as HTMLElement;
+    const rect = el.getBoundingClientRect();
+
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    setTilt({
+      rotateY: ((x / rect.width) - 0.5) * 12,
+      rotateX: ((y / rect.height) - 0.5) * -8,
+    });
   };
 
-  startAuto();
-  return () => stopAuto();
-}, [isHovering]);
-
-
-// ARROW SCROLL
-const scroll = (dir: "left" | "right") => {
-  const slider = sliderRef.current;
-  if (!slider) return;
-
-  const amount = slider.clientWidth;   // ⭐ scroll full card width
-  slider.scrollBy({
-    left: dir === "left" ? -amount : amount,
-    behavior: "smooth",
-  });
-};
+  const resetTilt = () => setTilt({ rotateX: 0, rotateY: 0 });
 
 
   return (
@@ -212,111 +231,120 @@ const scroll = (dir: "left" | "right") => {
 
 
   {/* SLIDER */}
-<div
-  ref={sliderRef}
-  className="
-    flex
-    overflow-x-auto
-    snap-x snap-mandatory
-    scrollbar-hide
-    gap-4
-    w-full
-  "
->
-  {projects.map((p, index) => (
-    <motion.div
-      key={index}
-      whileHover={{ scale: 1.02 }}
-      className="
-        snap-center
-        w-[100%]         /* FULL WIDTH ALWAYS */
-        flex-shrink-0
-        sm:w-[380px]
-        md:w-[460px]
-        px-2             /* SAFE padding */
-      "
-    >
-      <div className="relative w-full">
-
-        {/* Glow Border */}
-        <div
-          className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
-          style={{
-            background:
-              "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
-          }}
-        />
-
-        {/* CARD */}
-        <div
-          className="
-            relative z-10
-            w-full
-            bg-white/5 backdrop-blur-xl 
-            p-5 rounded-2xl 
-            border border-white/10
-            shadow-xl
-            flex flex-col
-          "
-        >
-          <div className="flex items-center justify-between">
-            <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
-              {p.category}
-            </span>
-
-            <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
-              My Role
-            </span>
-          </div>
-
-          <div className="flex gap-4 mt-4">
-            <img
-              src={p.img}
-              alt={p.title}
-              className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
-            />
-            <div className="flex-1">
-              <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
-              <p className="text-slate-300 text-sm mt-1 leading-relaxed">
-                {p.desc}
-              </p>
-            </div>
-          </div>
-
-          <ul className="mt-3 space-y-1.5">
-            {p.bullets.map((line, i) => (
-              <li key={i} className="text-sm text-slate-300 flex gap-2">
-                <span className="text-indigo-400 mt-1">•</span>{line}
-              </li>
-            ))}
-          </ul>
-
-          <div className="flex flex-wrap gap-2 mt-2">
-            {p.tech.map((tech, i) => (
-              <div
-                key={i}
-                className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1"
-              >
-                <Code size={14} /> {tech}
-              </div>
-            ))}
-          </div>
-
-          <a
-            href={p.url}
-            target="_blank"
-            className="block mt-auto text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white"
+   <div
+        ref={sliderRef}
+        onMouseEnter={() => setIsHovering(true)}
+        onMouseLeave={() => {
+          setIsHovering(false);
+          resetTilt();
+        }}
+        onMouseMove={handleTilt}
+        className="
+          flex 
+          overflow-x-auto 
+          snap-x snap-mandatory 
+          scrollbar-hide 
+          gap-4 
+          w-full
+          px-2
+        "
+      >
+        {projects.map((p, index) => (
+          <motion.div
+            key={index}
+            whileHover={{ scale: 1.02 }}
+            className="
+              snap-start
+              w-[100%]
+              sm:w-[380px]
+              md:w-[460px]
+              flex-shrink-0
+            "
           >
-            Visit Project <ExternalLink size={14} className="inline ml-2" />
-          </a>
-        </div>
+            <div className="relative w-full">
 
+              {/* Glow Border */}
+              <div
+                className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
+                style={{
+                  background:
+                    "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
+                }}
+              />
+
+              {/* CARD */}
+              <div
+                className="
+                  relative z-10
+                  w-full
+                  bg-white/5 backdrop-blur-xl 
+                  p-5 rounded-2xl 
+                  border border-white/10
+                  shadow-xl 
+                  flex flex-col
+                "
+              >
+                {/* Category + Role */}
+                <div className="flex items-center justify-between">
+                  <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
+                    {p.category}
+                  </span>
+                  <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
+                    My Role
+                  </span>
+                </div>
+
+                {/* IMAGE + TITLE + DESC */}
+                <div className="flex gap-4 mt-4">
+                  <img
+                    src={p.img}
+                    alt={p.title}
+                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
+                  />
+                  <div className="flex-1">
+                    <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
+                    <p className="text-slate-300 text-sm mt-1 leading-relaxed">
+                      {p.desc}
+                    </p>
+                  </div>
+                </div>
+
+                {/* BULLETS */}
+                <ul className="mt-3 space-y-1.5">
+                  {p.bullets.map((line, i) => (
+                    <li key={i} className="text-sm text-slate-300 flex gap-2">
+                      <span className="text-indigo-400 mt-1">•</span>
+                      {line}
+                    </li>
+                  ))}
+                </ul>
+
+                {/* TECH BADGES */}
+                <div className="flex flex-wrap gap-2 mt-2">
+                  {p.tech.map((tech, i) => (
+                    <div
+                      key={i}
+                      className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1"
+                    >
+                      <Code size={14} /> {tech}
+                    </div>
+                  ))}
+                </div>
+
+                {/* BUTTON */}
+                <a
+                  href={p.url}
+                  target="_blank"
+                  className="block mt-auto mb-1 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition text-white"
+                >
+                  Visit Project <ExternalLink size={14} className="inline ml-2" />
+                </a>
+
+              </div>
+            </div>
+          </motion.div>
+        ))}
       </div>
-    </motion.div>
-  ))}
-</div>
-
-
 
 
 </section>
