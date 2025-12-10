@@ -250,99 +250,99 @@ useEffect(() => {
         "
       >
         {projects.map((p, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.02 }}
-            className="
-              snap-start
-              w-[100%]
-              sm:w-[380px]
-              md:w-[460px]
-              flex-shrink-0
-            "
+      <motion.div
+  key={index}
+  whileHover={{ scale: 1.02 }}
+  className="
+    snap-start
+    w-screen          /* EXACT device width */
+    min-w-screen      /* NEVER shrink */
+    flex-shrink-0     /* Safari fix */
+  "
+>
+  <div className="relative w-[92vw] mx-auto">   {/* CENTERED SAFE WIDTH */}
+
+    {/* Glow Border */}
+    <div
+      className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
+      style={{
+        background:
+          "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
+      }}
+    />
+
+    {/* CARD */}
+    <div
+      className="
+        relative z-10
+        w-full
+        bg-white/5 backdrop-blur-xl
+        p-5 rounded-2xl
+        border border-white/10
+        shadow-xl
+        flex flex-col
+      "
+    >
+      {/* Category + Role */}
+      <div className="flex items-center justify-between">
+        <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
+          {p.category}
+        </span>
+        <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
+          My Role
+        </span>
+      </div>
+
+      {/* IMAGE + TITLE + DESC */}
+      <div className="flex gap-4 mt-4">
+        <img
+          src={p.img}
+          alt={p.title}
+          className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
+        />
+        <div className="flex-1">
+          <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
+          <p className="text-slate-300 text-sm mt-1 leading-relaxed">
+            {p.desc}
+          </p>
+        </div>
+      </div>
+
+      {/* BULLETS */}
+      <ul className="mt-3 space-y-1.5">
+        {p.bullets.map((line, i) => (
+          <li key={i} className="text-sm text-slate-300 flex gap-2">
+            <span className="text-indigo-400 mt-1">•</span>
+            {line}
+          </li>
+        ))}
+      </ul>
+
+      {/* TECH BADGES */}
+      <div className="flex flex-wrap gap-2 mt-2">
+        {p.tech.map((tech, i) => (
+          <div
+            key={i}
+            className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1"
           >
-            <div className="relative w-full">
+            <Code size={14} /> {tech}
+          </div>
+        ))}
+      </div>
 
-              {/* Glow Border */}
-              <div
-                className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
-                style={{
-                  background:
-                    "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
-                }}
-              />
+      {/* BUTTON */}
+      <a
+        href={p.url}
+        target="_blank"
+        className="block mt-auto mb-1 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition text-white"
+      >
+        Visit Project <ExternalLink size={14} className="inline ml-2" />
+      </a>
 
-              {/* CARD */}
-              <div
-                className="
-                  relative z-10
-                  w-full
-                  bg-white/5 backdrop-blur-xl 
-                  p-5 rounded-2xl 
-                  border border-white/10
-                  shadow-xl 
-                  flex flex-col
-                "
-              >
-                {/* Category + Role */}
-                <div className="flex items-center justify-between">
-                  <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
-                    {p.category}
-                  </span>
-                  <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
-                    My Role
-                  </span>
-                </div>
+    </div>
+  </div>
+</motion.div>
 
-                {/* IMAGE + TITLE + DESC */}
-                <div className="flex gap-4 mt-4">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
-                    <p className="text-slate-300 text-sm mt-1 leading-relaxed">
-                      {p.desc}
-                    </p>
-                  </div>
-                </div>
-
-                {/* BULLETS */}
-                <ul className="mt-3 space-y-1.5">
-                  {p.bullets.map((line, i) => (
-                    <li key={i} className="text-sm text-slate-300 flex gap-2">
-                      <span className="text-indigo-400 mt-1">•</span>
-                      {line}
-                    </li>
-                  ))}
-                </ul>
-
-                {/* TECH BADGES */}
-                <div className="flex flex-wrap gap-2 mt-2">
-                  {p.tech.map((tech, i) => (
-                    <div
-                      key={i}
-                      className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1"
-                    >
-                      <Code size={14} /> {tech}
-                    </div>
-                  ))}
-                </div>
-
-                {/* BUTTON */}
-                <a
-                  href={p.url}
-                  target="_blank"
-                  className="block mt-auto mb-1 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition text-white"
-                >
-                  Visit Project <ExternalLink size={14} className="inline ml-2" />
-                </a>
-
-              </div>
-            </div>
-          </motion.div>
         ))}
       </div>
 
