@@ -140,58 +140,46 @@ export default function Projects() {
   const [tilt, setTilt] = useState({ rotateX: 0, rotateY: 0 });
 
   // AUTO SLIDE
-  useEffect(() => {
-    const slider = sliderRef.current;
-    if (!slider) return;
+ // AUTO SLIDE
+useEffect(() => {
+  const slider = sliderRef.current;
+  if (!slider) return;
 
-    const startAuto = () => {
-      stopAuto();
-      autoRef.current = setInterval(() => {
-        if (!slider || isHovering) return;
-        const amount = Math.round(slider.clientWidth * 0.5);
-        slider.scrollBy({ left: amount, behavior: "smooth" });
+  const startAuto = () => {
+    stopAuto();
+    autoRef.current = setInterval(() => {
+      if (!slider || isHovering) return;
 
-        if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
-          slider.scrollTo({ left: 0, behavior: "smooth" });
-        }
-      }, 3000);
-    };
+      const amount = slider.clientWidth;   // ⭐ scroll full card width
+      slider.scrollBy({ left: amount, behavior: "smooth" });
 
-    const stopAuto = () => {
-      if (autoRef.current) clearInterval(autoRef.current);
-    };
-
-    startAuto();
-    return () => stopAuto();
-  }, [isHovering]);
-
-  // ARROW SCROLL
-  const scroll = (dir: "left" | "right") => {
-    const slider = sliderRef.current;
-    if (!slider) return;
-
-    const amount = Math.round(slider.clientWidth * 0.5);
-    slider.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
+      if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
+        slider.scrollTo({ left: 0, behavior: "smooth" });
+      }
+    }, 3000);
   };
 
-  // 3D TILT EFFECT
-  const handleTilt = (e: React.MouseEvent) => {
-    const el = e.currentTarget as HTMLElement;
-    const rect = el.getBoundingClientRect();
-
-    const x = e.clientX - rect.left;
-    const y = e.clientY - rect.top;
-
-    setTilt({
-      rotateY: ((x / rect.width) - 0.5) * 12,
-      rotateX: ((y / rect.height) - 0.5) * -8,
-    });
+  const stopAuto = () => {
+    if (autoRef.current) clearInterval(autoRef.current);
   };
 
-  const resetTilt = () => setTilt({ rotateX: 0, rotateY: 0 });
+  startAuto();
+  return () => stopAuto();
+}, [isHovering]);
+
+
+// ARROW SCROLL
+const scroll = (dir: "left" | "right") => {
+  const slider = sliderRef.current;
+  if (!slider) return;
+
+  const amount = slider.clientWidth;   // ⭐ scroll full card width
+  slider.scrollBy({
+    left: dir === "left" ? -amount : amount,
+    behavior: "smooth",
+  });
+};
+
 
   return (
 <section id="projects" className="section relative overflow-hidden">
