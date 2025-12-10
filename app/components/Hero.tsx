@@ -4,17 +4,36 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="pt-32 pb-20">
-      <div className="max-w-6xl mx-auto flex flex-col items-start px-4">
+    <section className="relative pt-32 pb-20 overflow-hidden">
 
-        {/* TEXT CONTENT */}
+      {/* VS CODE BACKGROUND */}
+    <div
+  className="
+    absolute inset-0
+    opacity-40
+    bg-cover bg-top
+    pointer-events-none 
+    select-none
+  "
+  style={{
+    backgroundImage: "url('/Bg1.png')",
+    filter: "brightness(1.3) contrast(1)",
+  }}
+/>
+
+
+      {/* GRADIENT OVERLAY FOR CLARITY */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/60"></div>
+
+      {/* CONTENT */}
+      <div className="relative max-w-6xl mx-auto flex flex-col items-start px-4 z-10">
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="w-full"
         >
-          {/* MAIN TAGLINE */}
           <h1
             className="text-4xl md:text-6xl font-extrabold leading-tight 
             bg-gradient-to-r from-indigo-300 to-cyan-300 
@@ -23,7 +42,6 @@ export default function Hero() {
             Building Lightning-Fast, Scalable & Impactful Web Applications.
           </h1>
 
-          {/* SUBTITLE */}
           <p
             className="text-lg md:text-2xl font-semibold bg-gradient-to-r 
             from-indigo-400 to-cyan-400 text-transparent bg-clip-text tracking-wide"
@@ -31,7 +49,6 @@ export default function Hero() {
             Full-Stack Developer • React • Angular • Node.js • 3+ Years Experience
           </p>
 
-          {/* DESCRIPTION */}
           <p className="mt-5 text-slate-300 max-w-3xl text-lg leading-relaxed">
             I create performant, maintainable and user-centric applications —
             from sleek frontends to scalable backend APIs. Passionate about
@@ -39,7 +56,6 @@ export default function Hero() {
             grow with your business.
           </p>
 
-          {/* BUTTONS */}
           <div className="flex gap-4 mt-10">
             <a
               href="#contact"
@@ -59,7 +75,6 @@ export default function Hero() {
             </a>
           </div>
         </motion.div>
-
       </div>
     </section>
   );
