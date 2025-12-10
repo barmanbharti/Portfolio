@@ -18,9 +18,24 @@ export default function Navbar() {
         <h1 className="font-semibold text-xl whitespace-nowrap flex items-center gap-2">
           Bharti
 
-          <span className="text-transparent bg-gradient-to-r from-indigo-300 to-cyan-200 bg-clip-text">
-            Full-Stack Developer
-          </span>
+           <span className="flex items-center gap-1">
+    <span className="inline-block w-5 h-5 text-indigo-300">
+      <svg viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 12c2.2 0 4-1.8 4-4s-1.8-4-4-4-4 1.8-4 4 1.8 4 4 4zm6 8v-1c0-2.7-3.3-4.5-6-4.5S6 16.3 6 19v1h12z"/>
+        <path d="M15.5 14.5l2-2-2-2m-7 4l-2-2 2-2"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+          fill="none"
+        />
+        
+      </svg>
+    </span>
+
+    <span className="text-transparent bg-gradient-to-r from-indigo-300 to-cyan-200 bg-clip-text">
+      Full-Stack Developer
+    </span>
+  </span>
         </h1>
 
         {/* DESKTOP NAV */}
