@@ -228,40 +228,38 @@ useEffect(() => {
   onMouseLeave={() => { setIsHovering(false); resetTilt(); }}
   onMouseMove={handleTilt}
   className="
-    flex 
-    overflow-x-auto 
-    snap-x snap-mandatory 
-    scrollbar-hide 
-    gap-4 
+    flex
+    overflow-x-auto
+    snap-x snap-mandatory
+    scrollbar-hide
+    gap-4
 
-    w-screen
-    max-w-screen
-    -ml-[50vw]
-    left-1/2
-    relative
+    w-full          /* ⭐ correct container width */
+    px-0            /* ⭐ mobile fix */
+    sm:px-4
 
-    min-h-[520px]     /* ⭐ iPHONE FIX */
-    sm:min-h-0
-
-    sm:left-0 sm:ml-0 sm:w-full sm:max-w-full
+    min-h-[520px]   /* ⭐ iPhone height fix */
   "
+  style={{ WebkitOverflowScrolling: "touch" }}
 >
 
+
     {projects.map((p, index) => (
- <motion.div
+<motion.div
   key={index}
   whileHover={{ scale: 1.02 }}
   className="
     snap-center
-    real-vw
-    w-screen
-    min-w-screen
+    w-full           /* ⭐ PERFECT for iPhone */
+    min-w-full       /* ⭐ slide width = parent width */
+
     flex-shrink-0
 
     sm:w-auto
     sm:min-w-0
   "
 >
+
         <div className="relative w-full max-w-[92vw] mx-auto sm:max-w-none">
 
           {/* Glow */}
