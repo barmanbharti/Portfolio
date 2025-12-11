@@ -203,151 +203,134 @@ useEffect(() => {
   return (
 <section id="projects" className="section relative overflow-hidden">
 
-  {/* Neon blur backgrounds */}
-  <div className="absolute -top-32 -left-20 w-[300px] h-[300px] bg-indigo-600/20 blur-3xl rounded-full pointer-events-none" />
-  <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-cyan-500/20 blur-[150px] rounded-full pointer-events-none" />
+  {/* Neon backgrounds */}
+  <div className="absolute -top-32 -left-20 w-[300px] h-[300px] bg-indigo-600/20 blur-3xl rounded-full" />
+  <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-cyan-500/20 blur-[150px] rounded-full" />
 
+  {/* Header */}
   <div className="flex items-center justify-between mb-4 px-2">
     <h2 className="text-3xl font-bold">Projects</h2>
 
     <div className="flex gap-3">
-      <button
-        aria-label="prev"
-        onClick={() => scroll("left")}
-        className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
-      >
+      <button onClick={() => scroll("left")} className="p-3 rounded-full bg-white/10 hover:bg-white/20">
         <ChevronLeft />
       </button>
-
-      <button
-        aria-label="next"
-        onClick={() => scroll("right")}
-        className="p-3 rounded-full bg-white/10 hover:bg-white/20 transition"
-      >
+      <button onClick={() => scroll("right")} className="p-3 rounded-full bg-white/10 hover:bg-white/20">
         <ChevronRight />
       </button>
     </div>
   </div>
 
-
   {/* SLIDER */}
-   <div
-        ref={sliderRef}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => {
-          setIsHovering(false);
-          resetTilt();
-        }}
-        onMouseMove={handleTilt}
-        className="
-          flex 
-          overflow-x-auto 
-          snap-x snap-mandatory 
-          scrollbar-hide 
-          gap-4 
-          w-full
-          px-2
-        "
-      >
-        {projects.map((p, index) => (
-      <motion.div
+ <div
+  ref={sliderRef}
+  onMouseEnter={() => setIsHovering(true)}
+  onMouseLeave={() => { setIsHovering(false); resetTilt(); }}
+  onMouseMove={handleTilt}
+  className="
+    flex 
+    overflow-x-auto 
+    snap-x snap-mandatory 
+    scrollbar-hide 
+    gap-4 
+
+    w-screen       /* ⭐ RESULTS: full device width */
+    max-w-screen   /* ⭐ prevents shrinking */
+    -ml-[50vw]     /* ⭐ center breakout trick */
+    left-1/2
+    relative
+
+    sm:left-0 sm:ml-0 sm:w-full sm:max-w-full
+  "
+>
+    {projects.map((p, index) => (
+    <motion.div
   key={index}
   whileHover={{ scale: 1.02 }}
   className="
-    snap-start
-    w-screen          /* EXACT device width */
-    min-w-screen      /* NEVER shrink */
-    flex-shrink-0     /* Safari fix */
+    snap-center
+    w-screen        /* ⭐ correct width */
+    min-w-screen    /* ⭐ correct width */
+    flex-shrink-0
+
+    sm:w-auto 
+    sm:min-w-0
   "
 >
-  <div className="relative w-[92vw] mx-auto">   {/* CENTERED SAFE WIDTH */}
+        <div className="relative w-full max-w-[92vw] mx-auto sm:max-w-none">
 
-    {/* Glow Border */}
-    <div
-      className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
-      style={{
-        background:
-          "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
-      }}
-    />
-
-    {/* CARD */}
-    <div
-      className="
-        relative z-10
-        w-full
-        bg-white/5 backdrop-blur-xl
-        p-5 rounded-2xl
-        border border-white/10
-        shadow-xl
-        flex flex-col
-      "
-    >
-      {/* Category + Role */}
-      <div className="flex items-center justify-between">
-        <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
-          {p.category}
-        </span>
-        <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
-          My Role
-        </span>
-      </div>
-
-      {/* IMAGE + TITLE + DESC */}
-      <div className="flex gap-4 mt-4">
-        <img
-          src={p.img}
-          alt={p.title}
-          className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
-        />
-        <div className="flex-1">
-          <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
-          <p className="text-slate-300 text-sm mt-1 leading-relaxed">
-            {p.desc}
-          </p>
-        </div>
-      </div>
-
-      {/* BULLETS */}
-      <ul className="mt-3 space-y-1.5">
-        {p.bullets.map((line, i) => (
-          <li key={i} className="text-sm text-slate-300 flex gap-2">
-            <span className="text-indigo-400 mt-1">•</span>
-            {line}
-          </li>
-        ))}
-      </ul>
-
-      {/* TECH BADGES */}
-      <div className="flex flex-wrap gap-2 mt-2">
-        {p.tech.map((tech, i) => (
+          {/* Glow */}
           <div
-            key={i}
-            className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1"
-          >
-            <Code size={14} /> {tech}
+            className="absolute inset-0 rounded-2xl opacity-40 blur-sm"
+            style={{
+              background:
+                "linear-gradient(135deg, rgba(99,102,241,0.25), rgba(14,165,233,0.25))",
+            }}
+          />
+
+          {/* CARD */}
+          <div className="relative z-10 w-full bg-white/5 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col">
+
+            {/* Category + Role */}
+            <div className="flex items-center justify-between">
+              <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
+                {p.category}
+              </span>
+              <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
+                My Role
+              </span>
+            </div>
+
+            {/* IMAGE + TITLE */}
+            <div className="flex gap-4 mt-4">
+              <img
+                src={p.img}
+                alt={p.title}
+                className="w-20 h-20 sm:w-24 sm:h-24 object-cover rounded-lg border border-white/10"
+              />
+              <div className="flex-1">
+                <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
+                <p className="text-slate-300 text-sm mt-1">
+                  {p.desc}
+                </p>
+              </div>
+            </div>
+
+            {/* BULLETS */}
+            <ul className="mt-3 space-y-1.5">
+              {p.bullets.map((line, i) => (
+                <li key={i} className="text-sm text-slate-300 flex gap-2">
+                  <span className="text-indigo-400 mt-1">•</span>
+                  {line}
+                </li>
+              ))}
+            </ul>
+
+            {/* TECH */}
+            <div className="flex flex-wrap gap-2 mt-2">
+              {p.tech.map((tech, i) => (
+                <div key={i} className="text-xs bg-black/20 px-3 py-1 rounded-full text-slate-200 border border-white/10 flex items-center gap-1">
+                  <Code size={14} /> {tech}
+                </div>
+              ))}
+            </div>
+
+            {/* BUTTON */}
+            <a
+              href={p.url}
+              target="_blank"
+              className="block mt-auto mb-1 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white"
+            >
+              Visit Project <ExternalLink size={14} className="inline ml-2" />
+            </a>
+
           </div>
-        ))}
-      </div>
-
-      {/* BUTTON */}
-      <a
-        href={p.url}
-        target="_blank"
-        className="block mt-auto mb-1 text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 transition text-white"
-      >
-        Visit Project <ExternalLink size={14} className="inline ml-2" />
-      </a>
-
-    </div>
+        </div>
+      </motion.div>
+    ))}
   </div>
-</motion.div>
-
-        ))}
-      </div>
-
-
 </section>
+
 
   );
 }
