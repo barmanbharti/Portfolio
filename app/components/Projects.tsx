@@ -244,16 +244,17 @@ useEffect(() => {
   "
 >
     {projects.map((p, index) => (
-    <motion.div
+ <motion.div
   key={index}
   whileHover={{ scale: 1.02 }}
   className="
     snap-center
-    w-screen        /* ⭐ correct width */
-    min-w-screen    /* ⭐ correct width */
+    real-vw
+    w-screen
+    min-w-screen
     flex-shrink-0
 
-    sm:w-auto 
+    sm:w-auto
     sm:min-w-0
   "
 >
