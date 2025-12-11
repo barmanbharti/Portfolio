@@ -234,15 +234,19 @@ useEffect(() => {
     scrollbar-hide 
     gap-4 
 
-    w-screen       /* ⭐ RESULTS: full device width */
-    max-w-screen   /* ⭐ prevents shrinking */
-    -ml-[50vw]     /* ⭐ center breakout trick */
+    w-screen
+    max-w-screen
+    -ml-[50vw]
     left-1/2
     relative
+
+    min-h-[520px]     /* ⭐ iPHONE FIX */
+    sm:min-h-0
 
     sm:left-0 sm:ml-0 sm:w-full sm:max-w-full
   "
 >
+
     {projects.map((p, index) => (
  <motion.div
   key={index}
