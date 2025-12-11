@@ -151,9 +151,9 @@ useEffect(() => {
 
         // ⭐ exact card width instead of slider width
         const card = slider.querySelector("div.snap-start") as HTMLDivElement;
-        const amount = card?.clientWidth || slider.clientWidth;
+      const amount = slider.offsetWidth;   // ⭐ FIX
 
-        slider.scrollBy({ left: amount, behavior: "smooth" });
+slider.scrollBy({ left: amount, behavior: "smooth" });
 
         if (slider.scrollLeft + slider.clientWidth >= slider.scrollWidth - 10) {
           slider.scrollTo({ left: 0, behavior: "smooth" });
@@ -175,12 +175,12 @@ useEffect(() => {
     if (!slider) return;
 
     const card = slider.querySelector("div.snap-start") as HTMLDivElement;
-    const amount = card?.clientWidth || slider.clientWidth;
+   const amount = slider.offsetWidth;   // ⭐ FIX
 
-    slider.scrollBy({
-      left: dir === "left" ? -amount : amount,
-      behavior: "smooth",
-    });
+slider.scrollBy({
+  left: dir === "left" ? -amount : amount,
+  behavior: "smooth",
+});
   };
 
   // 3D TILT EFFECT
