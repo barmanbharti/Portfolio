@@ -149,6 +149,8 @@ export default function Projects() {
   const [autoPlay, setAutoPlay] = useState(true);
 
   /* ---------------- AUTO SLIDER ---------------- */
+
+
   useEffect(() => {
     if (!autoPlay) return;
 
@@ -198,6 +200,15 @@ export default function Projects() {
     });
   };
 
+  const stopAutoPlay = () => {
+  setAutoPlay(false);
+  if (intervalRef.current) {
+    clearInterval(intervalRef.current);
+    intervalRef.current = null;
+  }
+};
+
+
   return (
     <section id="projects" className="relative overflow-hidden py-10">
 
@@ -225,21 +236,26 @@ export default function Projects() {
 
       {/* SLIDER */}
       <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-14">
-        <div
-          ref={sliderRef}
-          className="
-            flex
-            overflow-x-auto
-            snap-x snap-mandatory
-            scrollbar-hide
-            w-full
-            min-h-[520px]
-          "
-          style={{ WebkitOverflowScrolling: "touch" }}
-        >
+       <div
+  ref={sliderRef}
+  onPointerDown={stopAutoPlay}  // 🔥 click / touch
+  onTouchStart={stopAutoPlay}   // 🔥 mobile tap
+  onWheel={stopAutoPlay}        // 🔥 mouse wheel
+  className="
+    flex
+    overflow-x-auto
+    snap-x snap-mandatory
+    scrollbar-hide
+    w-full
+    min-h-[520px]
+  "
+  style={{ WebkitOverflowScrolling: "touch" }}
+>
+
           {projects.map((p) => (
             <motion.div
               key={p.no}
+              onClick={stopAutoPlay}
               className="
                 snap-start
                 flex-shrink-0
