@@ -23,8 +23,8 @@ export default function About() {
         className="text-slate-300 leading-relaxed text-lg"
       >
         I’m a <span className="font-semibold text-indigo-300">Full-Stack Developer</span> with
-        <span className="font-semibold text-indigo-300"> 3+ years of hands-on experience</span>
-        building scalable, high-performance web applications. I work across the stack using
+        <span className="font-semibold text-indigo-300"> 3+ years of hands-on experience  </span>
+        <span>building scalable, high-performance web applications. I work across the stack using</span>
         <span className="text-indigo-300"> React, Angular, TypeScript, Node.js</span> and modern
         backend technologies to deliver clean UI, robust APIs and production-ready systems.
       </motion.p>
