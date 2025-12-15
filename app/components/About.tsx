@@ -59,7 +59,7 @@ export default function About() {
         I’m comfortable owning features end-to-end — from requirement analysis and UI architecture
         to backend integration, testing, deployment and post-release improvements. I regularly
         collaborate with backend, QA, product and design teams to ensure scalability, performance
-        and maintainability of delivered solutions.
+        and long-term maintainability of delivered solutions.
       </motion.p>
 
       {/* DOMAIN EXPERIENCE */}
@@ -71,7 +71,7 @@ export default function About() {
       >
         Over the years, I’ve worked extensively on
         <span className="text-indigo-300"> CPaaS platforms, CRM systems, campaign builders</span>,
-        analytics dashboards and enterprise SaaS products. My work includes building modules
+        analytics dashboards and enterprise SaaS products. My work includes building systems
         from scratch, integrating third-party services, handling high-volume data flows and
         continuously improving user experience across desktop and mobile devices.
       </motion.p>
@@ -89,17 +89,25 @@ export default function About() {
             Biocipher Technologies
           </h3>
           <p className="text-slate-400 text-sm">2023 – Present</p>
+
           <p className="text-slate-300 mt-2">
             Working as a Full-Stack Developer on large-scale CPaaS products including
-            SMS, Voice, WhatsApp, RCS and CRM modules. I design and develop reusable UI
-            components, build secure and scalable backend APIs, and implement real-time
-            dashboards for monitoring campaigns, delivery metrics and user activity.
+            SMS, Voice, WhatsApp, RCS and CRM modules. I am responsible for building
+            reusable frontend components, designing backend APIs and implementing
+            real-time dashboards for campaign tracking, delivery metrics and user activity.
           </p>
+
           <p className="text-slate-300 mt-2">
-            I’ve been actively involved in architectural decisions, performance tuning,
-            database schema design and debugging production issues. I also mentor junior
-            developers, conduct code reviews and help improve overall frontend
-            consistency, code quality and delivery speed.
+            I actively contribute to system architecture, performance optimization and
+            database schema design, ensuring scalability for high-traffic and
+            data-intensive modules. I regularly debug and resolve production issues,
+            improve API response times and enhance overall platform stability.
+          </p>
+
+          <p className="text-slate-300 mt-2">
+            In addition to development, I mentor junior developers, conduct code reviews,
+            collaborate with cross-functional teams and help enforce coding standards
+            and best practices to maintain high code quality and faster delivery cycles.
           </p>
         </motion.div>
 
@@ -111,11 +119,19 @@ export default function About() {
         >
           <h3 className="text-xl font-semibold text-indigo-300">Synoriq</h3>
           <p className="text-slate-400 text-sm">2022</p>
+
           <p className="text-slate-300 mt-2">
             Worked on a FinTech platform where I developed responsive UI components
-            and implemented features based on client requirements. Focused on
-            translating functional specifications into clean, maintainable code
-            while ensuring usability, performance and cross-browser compatibility.
+            and implemented features based on detailed client requirements. I focused
+            on building clean, maintainable code while ensuring performance,
+            accessibility and cross-browser compatibility.
+          </p>
+
+          <p className="text-slate-300 mt-2">
+            I collaborated closely with senior developers and designers to translate
+            functional specifications into reliable frontend solutions, gaining
+            strong experience in requirement analysis, debugging and iterative
+            product improvements in a fast-paced environment.
           </p>
         </motion.div>
 

@@ -17,7 +17,7 @@ export default function Hero() {
   "
   style={{
     backgroundImage: "url('/Bg1.png')",
-    filter: "brightness(1.3) contrast(1)",
+    filter: "brightness(1.1) contrast(1)",
   }}
 />
 
