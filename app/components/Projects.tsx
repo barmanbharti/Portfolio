@@ -191,46 +191,57 @@ useEffect(() => {
     <section id="projects" className="relative overflow-hidden py-10">
 
       {/* Header */}
-      <div className="flex items-center justify-between mb-6 px-2">
-        <h2 className="text-3xl font-bold">Projects</h2>
-        <div className="flex gap-3">
-          <button onClick={() => scroll("left")} className="p-3 rounded-full bg-white/10 hover:bg-white/20">
-            <ChevronLeft />
-          </button>
-          <button onClick={() => scroll("right")} className="p-3 rounded-full bg-white/10 hover:bg-white/20">
-            <ChevronRight />
-          </button>
-        </div>
-      </div>
+      
 
       {/* SLIDER */}
-      <div
-        ref={sliderRef}
-        onMouseEnter={() => setIsHovering(true)}
-        onMouseLeave={() => setIsHovering(false)}
-        className="
-          flex
-          overflow-x-auto
-          snap-x snap-mandatory
-          scrollbar-hide
-          w-full
-          min-h-[520px]
-        "
-        style={{ WebkitOverflowScrolling: "touch" }}
-      >
+        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between mb-6">
+      <h2 className="text-3xl font-bold">Projects</h2>
+
+      <div className="flex gap-3">
+        <button
+          onClick={() => scroll("left")}
+          className="p-3 rounded-full bg-white/10 hover:bg-white/20"
+        >
+          <ChevronLeft />
+        </button>
+        <button
+          onClick={() => scroll("right")}
+          className="p-3 rounded-full bg-white/10 hover:bg-white/20"
+        >
+          <ChevronRight />
+        </button>
+      </div>
+    </div>
+     <div
+  ref={sliderRef}
+  className="
+    flex
+    overflow-x-auto
+    snap-x snap-mandatory
+    scrollbar-hide
+    w-full
+    min-h-[520px]
+  "
+  style={{ WebkitOverflowScrolling: "touch" }}
+>
+
         {projects.map((p, index) => (
-          <motion.div
-            key={index}
-            whileHover={{ scale: 1.02 }}
-            className="
-              snap-start
-              flex-shrink-0
-              w-full
-              min-w-full
-              sm:w-[420px]
-              sm:min-w-[420px]
-            "
-          >
+         <motion.div
+  key={index}
+  whileHover={{ scale: 1.02 }}
+  className="
+    snap-start
+    flex-shrink-0
+    w-full
+    min-w-full
+    sm:w-[460px]
+    sm:min-w-[460px]
+    lg:w-[520px]
+    lg:min-w-[520px]
+  "
+>
+
             {/* CARD SPACING (REPLACES GAP) */}
             <div className="px-3 sm:px-2 w-full h-full">
               <div className="relative h-full bg-white/5 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col">
@@ -293,6 +304,7 @@ useEffect(() => {
             </div>
           </motion.div>
         ))}
+      </div>
       </div>
     </section>
   
