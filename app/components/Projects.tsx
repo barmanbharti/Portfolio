@@ -259,14 +259,16 @@ useEffect(() => {
       <div className="relative h-full bg-white/5 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col">
 
         {/* CATEGORY + ROLE */}
-        <div className="flex items-center justify-between">
-          <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
-            {p.category}
-          </span>
-          <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
-            {p.role}
-          </span>
-        </div>
+        <div className="flex items-center justify-between gap-2 sm:gap-0">
+  <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
+    {p.category}
+  </span>
+
+  <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
+    {p.role}
+  </span>
+</div>
+
 
         {/* IMAGE + TITLE */}
         <div className="flex gap-4 mt-4">
