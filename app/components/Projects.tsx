@@ -273,12 +273,32 @@ useEffect(() => {
           />
 
           <div className="flex-1">
-            <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
-              <span className="text-indigo-400 font-mono text-sm sm:text-base">
-                {String(p.no).padStart(2, "0")}
-              </span>
-              {p.title}
-            </h3>
+      <h3 className="text-lg sm:text-xl font-semibold flex items-start gap-3">
+  <span
+    className="
+      flex items-center justify-center
+      min-w-[2.4rem]
+      h-8
+      sm:h-9
+      rounded-md
+      bg-indigo-500/15
+      text-indigo-300
+      font-mono
+      text-lg
+      sm:text-xl
+      leading-none
+    "
+  >
+    {String(p.no).padStart(2, "0")}
+  </span>
+
+  <span className="block mt-[2px] leading-snug">
+    {p.title}
+  </span>
+</h3>
+
+
+
 
             <p className="text-slate-300 text-sm mt-1">
               {p.desc}
