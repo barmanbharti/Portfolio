@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight, ExternalLink, Code } from "lucide-react";
 
 type Project = {
+    no:number,
     title: string;
     img: string;
     url: string;
@@ -19,6 +20,7 @@ type Project = {
 
 const projects: Project[] = [
   {
+    no: 1,
     title: "SMS Messaging Platform",
     img: "/SMS.svg",
     url: "https://sms.pixabits.in",
@@ -35,6 +37,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 2,
     title: "Voice Calling Dashboard",
     img: "/Voice.svg",
     url: "https://voice.pixabits.in",
@@ -51,6 +54,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 3,
     title: "RCS Rich Messaging Panel",
     img: "/RCS.svg",
     url: "https://rcs.pixabits.in",
@@ -67,6 +71,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 4,
     title: "WhatsApp Business API Panel",
     img: "/WA.svg",
     url: "https://wab.pixabits.in",
@@ -83,6 +88,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 5,
     title: "CRM With WebRTC Calling",
     img: "/CRM.svg",
     url: "https://crm.pixabits.in",
@@ -99,6 +105,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 6,
     title: "Pixabits Corporate Website",
     img: "/PX_logo.svg",
     url: "https://pixabits.in",
@@ -115,6 +122,7 @@ const projects: Project[] = [
   },
 
   {
+    no: 7,
     title: "Paisastreet – Finance Marketplace",
     img: "/PS_logo.svg",
     url: "https://paisastreet.in",
@@ -130,6 +138,7 @@ const projects: Project[] = [
     ]
   }
 ];
+
 
   
   
@@ -194,7 +203,7 @@ useEffect(() => {
       
 
       {/* SLIDER */}
-       <div className="max-w-7xl mx-auto px-6 lg:px-14">
+      <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-14">
         <div className="flex items-center justify-between mb-6">
       <h2 className="text-3xl font-bold">Projects</h2>
 
@@ -226,84 +235,96 @@ useEffect(() => {
   style={{ WebkitOverflowScrolling: "touch" }}
 >
 
-        {projects.map((p, index) => (
-         <motion.div
-  key={index}
-  whileHover={{ scale: 1.02 }}
-  className="
-    snap-start
-    flex-shrink-0
-    w-full
-    min-w-full
-    sm:w-[460px]
-    sm:min-w-[460px]
-    lg:w-[520px]
-    lg:min-w-[520px]
-  "
->
+       {projects.map((p) => (
+  <motion.div
+    key={p.no}
+    whileHover={{ scale: 1.02 }}
+    className="
+      snap-start
+      flex-shrink-0
+      w-full
+      min-w-full
+      sm:w-[460px]
+      sm:min-w-[460px]
+      lg:w-[520px]
+      lg:min-w-[520px]
+    "
+  >
+    {/* CARD SPACING (REPLACES GAP) */}
+    <div className="px-3 sm:px-2 w-full h-full">
+      <div className="relative h-full bg-white/5 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col">
 
-            {/* CARD SPACING (REPLACES GAP) */}
-            <div className="px-3 sm:px-2 w-full h-full">
-              <div className="relative h-full bg-white/5 backdrop-blur-xl p-5 rounded-2xl border border-white/10 shadow-xl flex flex-col">
+        {/* CATEGORY + ROLE */}
+        <div className="flex items-center justify-between">
+          <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
+            {p.category}
+          </span>
+          <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
+            {p.role}
+          </span>
+        </div>
 
-                {/* Category */}
-                <div className="flex items-center justify-between">
-                  <span className="text-xs px-2 py-1 bg-white/10 rounded-md text-indigo-300">
-                    {p.category}
-                  </span>
-                  <span className="text-xs px-3 py-1 bg-indigo-600/20 text-indigo-200 rounded-full">
-                    My Role
-                  </span>
-                </div>
+        {/* IMAGE + TITLE */}
+        <div className="flex gap-4 mt-4">
+          <img
+            src={p.img}
+            alt={p.title}
+            className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-white/10 object-cover"
+          />
 
-                {/* Image + Title */}
-                <div className="flex gap-4 mt-4">
-                  <img
-                    src={p.img}
-                    alt={p.title}
-                    className="w-20 h-20 sm:w-24 sm:h-24 rounded-lg border border-white/10 object-cover"
-                  />
-                  <div className="flex-1">
-                    <h3 className="text-lg sm:text-xl font-semibold">{p.title}</h3>
-                    <p className="text-slate-300 text-sm mt-1">{p.desc}</p>
-                  </div>
-                </div>
+          <div className="flex-1">
+            <h3 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+              <span className="text-indigo-400 font-mono text-sm sm:text-base">
+                {String(p.no).padStart(2, "0")}
+              </span>
+              {p.title}
+            </h3>
 
-                {/* Bullets */}
-                <ul className="mt-3 space-y-1.5">
-                  {p.bullets.map((line, i) => (
-                    <li key={i} className="text-sm text-slate-300 flex gap-2">
-                      <span className="text-indigo-400 mt-1">•</span>
-                      {line}
-                    </li>
-                  ))}
-                </ul>
+            <p className="text-slate-300 text-sm mt-1">
+              {p.desc}
+            </p>
+          </div>
+        </div>
 
-                {/* Tech */}
-                <div className="flex flex-wrap gap-2 mt-3">
-                  {p.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-black/20 px-3 py-1 rounded-full border border-white/10 flex items-center gap-1"
-                    >
-                      <Code size={14} /> {tech}
-                    </span>
-                  ))}
-                </div>
+        {/* BULLETS */}
+        <ul className="mt-3 space-y-1.5">
+          {p.bullets.map((line, i) => (
+            <li
+              key={i}
+              className="text-sm text-slate-300 flex gap-2"
+            >
+              <span className="text-indigo-400 mt-1">•</span>
+              {line}
+            </li>
+          ))}
+        </ul>
 
-                {/* Button */}
-                <a
-                  href={p.url}
-                  target="_blank"
-                  className="mt-auto block text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white"
-                >
-                  Visit Project <ExternalLink size={14} className="inline ml-2" />
-                </a>
+        {/* TECH STACK */}
+        <div className="flex flex-wrap gap-2 mt-3">
+          {p.tech.map((tech, i) => (
+            <span
+              key={i}
+              className="text-xs bg-black/20 px-3 py-1 rounded-full border border-white/10 flex items-center gap-1 text-slate-200"
+            >
+              <Code size={14} /> {tech}
+            </span>
+          ))}
+        </div>
 
-              </div>
-            </div>
-          </motion.div>
-        ))}
+        {/* CTA */}
+        <a
+          href={p.url}
+          target="_blank"
+          className="mt-auto block text-center px-4 py-2 rounded-lg bg-indigo-600 hover:bg-indigo-500 text-white"
+        >
+          Visit Project <ExternalLink size={14} className="inline ml-2" />
+        </a>
+
+      </div>
+    </div>
+  </motion.div>
+))}
+
       </div>
       </div>
     </section>
