@@ -204,7 +204,7 @@ useEffect(() => {
 
       {/* SLIDER */}
       <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-14">
-        <div className="flex items-center justify-between mb-6">
+      <div className="flex items-center justify-between mb-6">
       <h2 className="text-3xl font-bold">Projects</h2>
 
       <div className="flex gap-3">
@@ -222,6 +222,10 @@ useEffect(() => {
         </button>
       </div>
     </div>
+    </div>
+    
+      <div className="max-w-7xl mx-auto px-0 sm:px-6 lg:px-14">
+        
      <div
   ref={sliderRef}
   className="
