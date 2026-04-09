@@ -66,7 +66,7 @@ export default function Hero() {
             </a>
 
             <a
-              href="/Bharti Fullstack Resume.pdf"
+              href="/BHARTI_KUMARI_Resume_FullStack_Dev.pdf"
               download
               className="px-6 py-3 border border-indigo-400 rounded-xl text-indigo-200 font-medium 
               hover:border-indigo-300 transition-all"
