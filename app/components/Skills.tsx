@@ -19,7 +19,13 @@ import {
   Server,
   Database,
   Merge,
-  ShieldCheck
+  ShieldCheck,
+  Workflow,
+  Activity,
+  Wrench,
+  Gauge,
+  Bug,
+  Rocket,
 } from "lucide-react";
 
 const skillCategories = [
@@ -32,45 +38,39 @@ const skillCategories = [
   },
 
   {
-    title: "Markup & Styling",
-    skills: [
-      { name: "HTML5", icon: FileCode },
-      { name: "CSS3", icon: FileCode2 },
-      { name: "Bootstrap", icon: Box },
-      { name: "Tailwind CSS", icon: Box },
-    ],
-  },
-
-  {
-    title: "Frontend Frameworks & Libraries",
+    title: "Frontend Technologies",
     skills: [
       { name: "Angular", icon: Layers },
-      { name: "React", icon: Cpu },
+      { name: "React.js", icon: Cpu },
       { name: "Redux", icon: Layers },
+      { name: "HTML5", icon: FileCode },
+      { name: "CSS3", icon: FileCode2 },
+      { name: "Tailwind CSS", icon: Box },
+      { name: "Bootstrap", icon: Box },
+      { name: "Responsive Web Design", icon: FileCode },
+      { name: "Single Page Application (SPA)", icon: Cpu },
     ],
   },
 
   {
-    title: "Backend & Runtime",
+    title: "Backend Technologies",
     skills: [
       { name: "Node.js", icon: Server },
       { name: "Express.js", icon: Merge },
+      { name: "REST API", icon: Cloud },
+      { name: "RESTful Web Services", icon: Cloud },
+      { name: "Microservices Architecture", icon: Workflow },
+      { name: "Real-Time Applications", icon: Activity },
+      { name: "Event-Driven Architecture", icon: Workflow },
+      { name: "API Development", icon: FileJson },
+      { name: "Server-Side Development", icon: Server },
     ],
   },
 
   {
-    title: "Databases",
+    title: "Database",
     skills: [
       { name: "MongoDB", icon: Database },
-    ],
-  },
-
-  {
-    title: "API Integration & Tools",
-    skills: [
-      { name: "RESTful APIs", icon: Cloud },
-      { name: "JSON", icon: FileJson },
-      { name: "Postman", icon: Cloud },
     ],
   },
 
@@ -78,30 +78,35 @@ const skillCategories = [
     title: "Testing",
     skills: [
       { name: "Jest", icon: ShieldCheck },
+      { name: "Unit Testing", icon: ShieldCheck },
     ],
   },
 
   {
-    title: "Version Control & Dev Tools",
+    title: "DevOps & Tools",
     skills: [
       { name: "Git", icon: GitBranch },
       { name: "GitHub", icon: Github },
       { name: "GitLab", icon: Gitlab },
+      { name: "CI/CD", icon: Rocket },
+      { name: "Postman", icon: Cloud },
       { name: "VS Code", icon: FileCode2 },
     ],
   },
 
   {
-    title: "Development Practices",
+    title: "Methodologies",
     skills: [
       { name: "Agile", icon: CheckCircle },
-      { name: "SDLC", icon: BookOpen },
       { name: "Scrum", icon: CheckCircle },
-      { name: "Component-Based Architecture", icon: Layers },
+      { name: "SDLC", icon: BookOpen },
+      { name: "Component Architecture", icon: Layers },
+      { name: "Code Review", icon: Wrench },
+      { name: "Debugging", icon: Bug },
+      { name: "Performance Optimization", icon: Gauge },
     ],
   },
 ];
-
 
 export default function Skills() {
   return (
@@ -117,14 +122,11 @@ export default function Skills() {
             transition={{ delay: i * 0.1, duration: 0.4 }}
             viewport={{ once: true }}
           >
-            {/* Category Title */}
             <h3 className="text-xl font-semibold text-indigo-300 mb-3">
               {category.title}
             </h3>
 
-            {/* Skills Grid */}
-           <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-
+            <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {category.skills.map((skill, index) => (
                 <motion.div
                   key={index}

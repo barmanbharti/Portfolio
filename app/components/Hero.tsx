@@ -49,12 +49,9 @@ export default function Hero() {
             Full-Stack Developer • React • Angular • Node.js • 3+ Years Experience
           </p>
 
-          <p className="mt-5 text-slate-300 max-w-3xl text-lg leading-relaxed">
-            I create performant, maintainable and user-centric applications —
-            from sleek frontends to scalable backend APIs. Passionate about
-            clean architecture, reusable components and building systems that
-            grow with your business.
-          </p>
+         <p className="mt-5 text-slate-300 max-w-3xl text-lg leading-relaxed">
+  I architect and develop scalable, high-performance web applications across frontend and backend systems, specializing in responsive UI engineering, RESTful APIs, microservices architecture, and real-time communication platforms. Passionate about clean architecture, reusable component design, performance optimization, and building production-ready systems that scale with evolving business needs.
+</p>
 
           <div className="flex gap-4 mt-10">
             <a
@@ -71,7 +68,7 @@ export default function Hero() {
               className="px-6 py-3 border border-indigo-400 rounded-xl text-indigo-200 font-medium 
               hover:border-indigo-300 transition-all"
             >
-              Download CV
+              Download CV 
             </a>
           </div>
         </motion.div>

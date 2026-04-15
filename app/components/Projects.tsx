@@ -17,22 +17,21 @@ type Project = {
   };
   
   
-
 const projects: Project[] = [
   {
     no: 1,
     title: "SMS Messaging Platform",
     img: "/SMS.svg",
     url: "https://sms.pixabits.in",
-    desc: "A full-scale SMS platform for campaigns, delivery reports and real-time analytics.",
+    desc: "Enterprise-scale SMS campaign management platform with real-time delivery analytics, template workflows, and high-volume messaging operations.",
     category: "SMS",
     role: "Full-Stack Developer (Angular + Node.js + Express + MongoDB)",
     tech: ["Angular", "Node.js", "Express.js", "MongoDB", "TypeScript", "Charts.js"],
     bullets: [
-      "Developed complete modules for campaigns, templates, wallet and detailed delivery analytics.",
-      "Built scalable REST APIs with optimized MongoDB queries for high-volume SMS logs.",
-      "Integrated real-time delivery insights using WebSockets for status updates and tracking.",
-      "Improved performance with pagination, indexes and efficient data pipelines across modules."
+      "Engineered campaign, template, wallet, and delivery analytics modules for high-volume SMS processing workflows.",
+      "Architected scalable RESTful APIs with optimized MongoDB queries for large-scale SMS log ingestion and retrieval.",
+      "Integrated real-time delivery tracking pipelines for instant campaign status updates and delivery insights.",
+      "Enhanced platform performance through query optimization, indexing, pagination, and efficient data processing pipelines."
     ]
   },
 
@@ -41,15 +40,15 @@ const projects: Project[] = [
     title: "Voice Calling Dashboard",
     img: "/Voice.svg",
     url: "https://voice.pixabits.in",
-    desc: "A voice routing and analytics panel for managing calls and monitoring agent performance.",
+    desc: "Real-time voice routing and analytics dashboard for managing call operations and monitoring agent performance.",
     category: "VOICE",
     role: "Full-Stack Developer (Angular + Node.js + WebRTC)",
     tech: ["Angular", "Node.js", "Express.js", "MongoDB", "WebRTC"],
     bullets: [
-      "Built UI for call routing, agent dashboards and detailed live call logs.",
-      "Implemented Node.js APIs for call events, performance tracking and reporting.",
-      "Integrated WebRTC signaling to show ringing, connected and dropped call states.",
-      "Created dynamic reports with filters, grouping and aggregation-based insights."
+      "Developed voice routing interfaces, live agent dashboards, and real-time call monitoring modules.",
+      "Implemented backend APIs for call lifecycle events, agent performance metrics, and reporting workflows.",
+      "Integrated Web Real-Time Communication (WebRTC) signaling for live call state tracking and interaction management.",
+      "Built aggregation-based reporting pipelines with advanced filtering and grouped analytics insights."
     ]
   },
 
@@ -58,15 +57,15 @@ const projects: Project[] = [
     title: "RCS Rich Messaging Panel",
     img: "/RCS.svg",
     url: "https://rcs.pixabits.in",
-    desc: "A platform for creating rich RCS cards, carousels, CTAs and monitoring delivery metrics.",
+    desc: "Rich Communication Services platform for managing dynamic RCS templates, media cards, and delivery analytics.",
     category: "RCS",
     role: "Full-Stack Developer",
     tech: ["Angular", "Node.js", "Express.js", "MongoDB"],
     bullets: [
-      "Built an RCS template builder supporting cards, media, carousels and previews.",
-      "Created backend APIs for template saving, approval workflows and access control.",
-      "Implemented delivery/read analytics using event-based real-time update streams.",
-      "Designed scalable MongoDB schemas for templates, campaigns and approval flows."
+      "Built dynamic RCS template builder supporting cards, media, carousels, CTAs, and live previews.",
+      "Developed backend services for template persistence, approval workflows, and role-based access control.",
+      "Implemented event-driven delivery and read analytics using real-time update streams.",
+      "Designed scalable MongoDB schemas for campaign templates, approval workflows, and messaging configurations."
     ]
   },
 
@@ -75,15 +74,15 @@ const projects: Project[] = [
     title: "WhatsApp Business API Panel",
     img: "/WA.svg",
     url: "https://wab.pixabits.in",
-    desc: "A WABA platform for templates, broadcast campaigns, segmentation and analytics.",
+    desc: "WhatsApp Business API platform for template management, campaign broadcasting, audience segmentation, and analytics.",
     category: "WABA",
     role: "Full-Stack Developer",
     tech: ["Angular", "Node.js", "Express.js", "MongoDB"],
     bullets: [
-      "Built template creation UI with variable mapping, validations and preview steps.",
-      "Developed backend for segmentation, broadcast scheduling and delivery events.",
-      "Implemented real-time dashboards for delivered, read and failed message states.",
-      "Optimized large logs using indexed queries, pagination and aggregated reporting."
+      "Engineered template builder workflows with variable mapping, validations, and live preview rendering.",
+      "Implemented backend modules for segmentation, campaign scheduling, and delivery event processing.",
+      "Built real-time dashboards for delivered, read, failed, and pending campaign metrics.",
+      "Optimized analytics performance for large-scale messaging logs using indexing and aggregation pipelines."
     ]
   },
 
@@ -92,15 +91,15 @@ const projects: Project[] = [
     title: "CRM With WebRTC Calling",
     img: "/CRM.svg",
     url: "https://crm.pixabits.in",
-    desc: "A CRM system with WebRTC calling, lead tracking, pipelines and live dashboards.",
+    desc: "CRM platform with integrated WebRTC calling, lead lifecycle management, sales pipelines, and operational dashboards.",
     category: "CRM",
     role: "Full-Stack Engineer (React + Node.js + MongoDB)",
     tech: ["React", "Redux", "Node.js", "Express.js", "MongoDB", "WebRTC"],
     bullets: [
-      "Integrated WebRTC calling with event handling, call tracking and session logs.",
-      "Built REST APIs for leads, pipelines, call logs and user activity analytics.",
-      "Created real-time dashboards using Redux and event-driven data updates.",
-      "Designed modular MongoDB schemas for leads, activities and pipeline workflows."
+      "Integrated Web Real-Time Communication (WebRTC) based calling with call event handling and session tracking.",
+      "Developed REST APIs for lead management, pipelines, call logs, and user activity analytics.",
+      "Implemented real-time dashboards with Redux and event-driven architecture for operational visibility.",
+      "Designed modular MongoDB schemas for leads, pipeline stages, activity logs, and workflow automation."
     ]
   },
 
@@ -109,15 +108,15 @@ const projects: Project[] = [
     title: "Pixabits Corporate Website",
     img: "/PX_logo.svg",
     url: "https://pixabits.in",
-    desc: "A corporate CPaaS website showcasing products, features, pricing and brand identity.",
+    desc: "Corporate CPaaS website showcasing product offerings, pricing models, and brand presence.",
     category: "WEBSITE",
     role: "Full-Stack Developer",
     tech: ["React", "Tailwind", "Framer Motion", "Node.js"],
     bullets: [
-      "Developed responsive landing, product and pricing pages with reusable components.",
-      "Built backend endpoints for lead forms, newsletters and content submissions.",
-      "Added smooth animations and micro-interactions using Framer Motion.",
-      "Enhanced SEO, accessibility and performance across all major sections."
+      "Developed responsive landing, pricing, and product showcase pages with reusable component architecture.",
+      "Implemented backend endpoints for lead capture, newsletter subscriptions, and content workflows.",
+      "Enhanced user engagement with animation-driven micro-interactions using Framer Motion.",
+      "Optimized SEO, accessibility, and Lighthouse performance across public-facing web pages."
     ]
   },
 
@@ -126,15 +125,15 @@ const projects: Project[] = [
     title: "Paisastreet – Finance Marketplace",
     img: "/PS_logo.svg",
     url: "https://paisastreet.in",
-    desc: "A fintech marketplace for loans, credit cards, insurance and financial product listings.",
+    desc: "FinTech marketplace platform for loans, credit cards, insurance, and financial product discovery.",
     category: "WEBSITE",
     role: "Full-Stack Developer",
     tech: ["React", "Tailwind", "Node.js", "Express.js", "MongoDB"],
     bullets: [
-      "Developed UI for loan comparison, card listings, insurance pages and lead forms.",
-      "Created backend APIs for forms, products, filtering and category-based data.",
-      "Designed reusable UI components for cards, grids and dynamic product rendering.",
-      "Built MongoDB schemas for leads, categories and product details with optimized queries."
+      "Built dynamic product listing and comparison interfaces for loans, insurance, and financial products.",
+      "Developed backend APIs for lead generation, filtering, product categorization, and data retrieval.",
+      "Created reusable UI systems for cards, grids, filters, and dynamic rendering components.",
+      "Designed optimized MongoDB schemas for lead management, product catalogs, and category structures."
     ]
   }
 ];
